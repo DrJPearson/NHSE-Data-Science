@@ -11,49 +11,6 @@ output:
 These princples were adapted from [DHSC Coding Princples](https://mattm-dhsc.github.io/coding_principles_book/) 
 by Matthew Malcher, which in turn were inspired by MOJ [Coding Princples and Standards](https://moj-analytical-services.github.io/our-coding-standards/web/)
 
-## Version Control
-
-To ensure changes are well documented, errors are easier to trace, and 
-work is not lost or overwritten, use version control.  The standard approach 
-to do this from RStudio is to separate each piece of work into individual 
-projects and use "Git".  
-
-### Git
-
-Git can track a folder (aka repo) so that changes are identified and 
-commented.  This then builds a log which can be used to restore older 
-versions if necessary.  These repos can be held in your file store or on 
-a hosting site such as GitHub.  RStudio can be setup to interact with Git 
-and GitHub in order to make this process part of the normal way of working.
-
-A repository is Git's encompassing of the entire collection of files and 
-folders associated with a project, along with each file's revision history. 
-The file history appears as snapshots in time called **commits** (versions), 
-these commits can be organized into multiple lines of development called 
-**branches** (seperate areas of development on the same project). Using 
-the command line or other ease-of-use interfaces, a Git repository also 
-allows for: interaction with the history, **cloning** (copying), creating 
-branches, committing (saving a version), **merging** (bringing two versions 
-together), comparing changes across versions of code, and more. 
-
-![A recommeded workflow from GitHub](githubflow.png)
-
-
-### usethis()
-Git is primarliy controlled through the terminal using git commands.  The 
-usethis package allows these commands to be run through the R console.  A 
-GUI can be added to RStudio for Git by going to *Tool > Project Options > Git/SVN*.  
-Connections can then be made to GitHub by setting a Personal Authorisation 
-Token (*browse_github_pat()*) and creating a repo in GitHub (*use_github(protocl = "https")*)
-
-### Project Structure
-
-- Metadata (title, description, version, authors, license, packages with 
-versions required) saved in a **DESCRIPTION** file
-- functions in separate .R scripts saved in the **R/** folder
-- tests in a **tests/** folder (optional-mainly for package development)
-- Documentation saved as .rmd files in the **vignettes/** folder
-
 ## Script format and Structure
 
 A new user to your code wants to quickly gain an overview and be able to run 
@@ -164,6 +121,55 @@ ggplot(sales,aes(x= date, y = price, color = output)) +
 cat("\n", "Done, Run time:", format(Sys.time() - start_time, digits = 4), "\n") 
 ```
 
+
+## Version Control
+
+To ensure changes are well documented, errors are easier to trace, and 
+work is not lost or overwritten, use version control.  The standard approach 
+to do this from RStudio is to separate each piece of work into individual 
+projects and use "Git".  
+
+### Project Structure
+
+- Metadata (title, description, version, authors, license, packages with 
+versions required) saved in a **DESCRIPTION** file
+- functions in separate .R scripts saved in the **R/** folder
+- tests in a **tests/** folder (optional-mainly for package development)
+- Documentation saved as .rmd files in the **vignettes/** folder
+
+### here()
+
+If your code is saved as a project then it is a very good idea to use the *here()*
+package instead of setwd() commands.
+
+### Git
+
+Git can track a folder (aka repo) so that changes are identified and 
+commented.  This then builds a log which can be used to restore older 
+versions if necessary.  These repos can be held in your file store or on 
+a hosting site such as GitHub.  RStudio can be setup to interact with Git 
+and GitHub in order to make this process part of the normal way of working.
+
+A repository is Git's encompassing of the entire collection of files and 
+folders associated with a project, along with each file's revision history. 
+The file history appears as snapshots in time called **commits** (versions), 
+these commits can be organized into multiple lines of development called 
+**branches** (seperate areas of development on the same project). Using 
+the command line or other ease-of-use interfaces, a Git repository also 
+allows for: interaction with the history, **cloning** (copying), creating 
+branches, committing (saving a version), **merging** (bringing two versions 
+together), comparing changes across versions of code, and more. 
+
+![A recommeded workflow from GitHub](githubflow.png)
+
+
+### usethis()
+Git is primarliy controlled through the terminal using git commands.  The 
+usethis package allows these commands to be run through the R console.  A 
+GUI can be added to RStudio for Git by going to *Tool > Project Options > Git/SVN*.  
+Connections can then be made to GitHub by setting a Personal Authorisation 
+Token (*browse_github_pat()*) and creating a repo in GitHub (*use_github(protocl = "https")*)
+
 ### test data
 
 When sharing code it is very useful if the actual data can't be provided, to provide 
@@ -173,7 +179,3 @@ easier to understand what a code is trying to do when you are not worrying about
 formats or erronous values within the raw data.  It will also help highlight if 
 package versions are incorrect or whether the code has been downloaded/cloned with errors.
 
-### here()
-
-If your code is saved as a project then it is a very good idea to use the *here()*
-package instead of setwd() commands.
