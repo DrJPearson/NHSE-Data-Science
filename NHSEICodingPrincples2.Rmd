@@ -11,6 +11,15 @@ output:
 These princples were adapted from [DHSC Coding Princples](https://mattm-dhsc.github.io/coding_principles_book/) 
 by Matthew Malcher, which in turn were inspired by MOJ [Coding Princples and Standards](https://moj-analytical-services.github.io/our-coding-standards/web/)
 
+## Aim of this document
+
+To make sharing eaiser, align pracitces and ensure we have good version control, 
+these recommendations have been collated.  Essentially, good coding practice comes 
+down to three parts: easily readable code, working in a autamated version controlled 
+enviroment, and create clear logic.  The first two can be achieved by following the 
+guidelines below.  The third requires practice and learning from mistakes.
+
+
 ## Script format and Structure
 
 A new user to your code wants to quickly gain an overview and be able to run 
@@ -19,7 +28,7 @@ alongside the code to run it is required.
 
 If **using** a Metadata description file then this covers many key pieces of starting 
 information such as required packages and versions, as well as details about the 
-authors.  Even you should start each script with a small comment saying 
+authors.  Even so, you should start each script with a small comment saying 
 what it attempts to do, and a general overview of sections within the code.  
 
 If **not using** a Metadata description then also include details about the author and 
@@ -131,6 +140,12 @@ projects and use "Git".
 
 ### Project Structure
 
+If using RStudio, then a new project can be created from the dropdown menus.
+Regardless, a project is essentially a collection of folders which have in-built
+links.  This means that code can be spread across the folders so that it can 
+be organised whilst at the same time the code knows where all the components are.
+Usually, a project consits of:
+
 - Metadata (title, description, version, authors, license, packages with 
 versions required) saved in a **DESCRIPTION** file
 - functions in separate .R scripts saved in the **R/** folder
@@ -140,7 +155,11 @@ versions required) saved in a **DESCRIPTION** file
 ### here()
 
 If your code is saved as a project then it is a very good idea to use the *here()*
-package instead of setwd() commands.
+package instead of setwd() commands.  This automatically takes information about
+where the project folder is stored and updates when the folder is moved.  This 
+means that here() commands will work on other file systems whereas setwd() 
+commands need to be updated every time the code is moved or the folder structure
+changes.
 
 ### Git
 
